@@ -4,21 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="photo/love.ico" type="image/x-icon">
-<title>能和你交往很開心</title>
-
+<title>希望能和你一起瘋瘋的走下去</title>
 <style>
     body {
         height: 100%;
         padding: 0;
         margin: 0;
-        background: #ffc0cb;
+        background: pink;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
     }
     
     .photo-container {
-        margin: 30px 0px 0px 150px;
+        margin: 30px 0px 0px 800px; /* 調整此處 */
         max-width: 500px;
         position: relative;
     }
@@ -46,11 +45,10 @@
     .text-container {
         position: absolute;
         text-align: center;
-        right: 250px;
+        left: 200px; /* 修改此處 */
         font-family: 'Noto Sans JP', sans-serif;
         font-weight: bold;
         font-size: 23px;
-        color: black;
     }
     .line {
         opacity: 0;
@@ -77,31 +75,51 @@
     <img class="photo" id="photo" src="">
 </div>
 <div class="text-container">
-    <h1>我們剛開始交往時</h1>
+    <h1>台南之旅</h1>
     
-    <p class="line">那時我們一起做了蛋糕</p>
-    <p class="line">一起連夜趕出網程和系統的期末作業</p>
-    <p class="line">期末結束後 我們一起在操場中慢悠悠的散步</p>
-    <p class="line">拍了我們第一張的情侶照</p>
+    <p class="line">我們一起在台南吃了好多好吃的</p>
+    <p class="line">牛肉湯 豬心冬粉 鍋燒麵 奉口 TCRC 腐城</p>
+    <p class="line">每一樣我都好喜歡</p>
+    <p class="line">能和你一起吃美食的我好幸福</p>
+    <br>
+    <p class="line">在漁光島時</p>
+    <p class="line">因為我們可愛的互動 被問能不能幫我們拍照</p>
+    <p class="line">也因此我和你有了更多張的情侶照</p>
+    <p class="line">在這次旅行中 我理解到何謂「幸福」</p>
 
-    <p class="line">在租屋處中我們一起爬牆 一起探索對方</p>
-    <p class="line">雖然做了很多事</p>
-    <p class="line">但我最喜歡抱著你 和你一起談天說地</p>
-
-    <button class="line" id="click">寶貝謝謝你來到我身邊</button>
+    <button class="line" id="click">寶貝 和你在一起我很開心</button>
 </div>
 
 <script>
     const photoUrls = [
-        "photo/page2_1.jpg",
-        "photo/page2_2.jpg",
-        "photo/page2_3.jpg", 
-        "photo/page2_4.jpg",
-        "photo/page2_5.jpg",
-        "photo/page2_6.jpg",
-        "photo/page2_9.jpg",
-    ];
-
+    "photo/page3(1).jpg",
+    "photo/page3(2).jpg",
+    "photo/page3(3).jpg",
+    "photo/page3(4).jpg",
+    "photo/page3(5).jpg",
+    "photo/page3(6).jpg",
+    "photo/page3(7).jpg",
+    "photo/page3(8).jpg",
+    "photo/page3(9).jpg",
+    "photo/page3(10).jpg",
+    "photo/page3(11).jpg",
+    "photo/page3(12).jpg",
+    "photo/page3(13).jpg",
+    "photo/page3(14).jpg",
+    "photo/page3(15).jpg",
+    "photo/page3(16).jpg",
+    "photo/page3(17).jpg",
+    "photo/page3(18).jpg",
+    "photo/page3(19).jpg",
+    "photo/page3(20).jpg",
+    "photo/page3(21).jpg",
+    "photo/page3(22).jpg",
+    "photo/page3(23).jpg",
+    "photo/page3(24).jpg",
+    "photo/page3(25).jpg",
+    "photo/page3(26).jpg",
+    "photo/page3(27).jpg"
+];
     let currentIndex = 0;
 
     function createPhotos() {
@@ -112,7 +130,7 @@
     function rotatePhotos() {
         currentIndex = (currentIndex + 1) % photoUrls.length;
         createPhotos();
-        setTimeout(rotatePhotos, 1800); // Change photo every 2.5 seconds
+        setTimeout(rotatePhotos, 2500); // Change photo every 2.5 seconds
     }
 
     createPhotos();
@@ -127,13 +145,12 @@
                 lines[index].style.opacity = 1;
                 index++;
             }
-        }, 1800); // Show next line every 2.5 seconds
+        }, 2500); // Show next line every 2.5 seconds
 
         document.getElementById('click').addEventListener('click', function() {
     // 在此处指定要跳转到的页面URL，并在新标签页中打开
-            window.open('page_3.html', '_blank');
+            window.open('page_4.html', '_blank');
         });
-        
     });
 </script>
 </body>

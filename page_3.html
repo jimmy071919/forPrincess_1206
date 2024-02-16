@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto Floating Photos</title>
+<link rel="icon" href="photo/love.ico" type="image/x-icon">
+<title>好喜歡和你聊天和玩耍</title>
 <style>
     body {
         height: 100%;
@@ -44,11 +45,10 @@
     .text-container {
         position: absolute;
         text-align: center;
-        top: 3%;
         left: 200px; /* 修改此處 */
         font-family: 'Noto Sans JP', sans-serif;
         font-weight: bold;
-        font-size: 25px;
+        font-size: 23px;
     }
     .line {
         opacity: 0;
@@ -66,6 +66,7 @@
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 12px;
+        font-weight: bold;
     }
 </style>
 </head>
@@ -146,10 +147,9 @@
             }
         }, 2500); // Show next line every 2.5 seconds
 
-        // 添加按钮点击事件监听器
         document.getElementById('click').addEventListener('click', function() {
-            // 在此处指定要跳转到的页面URL
-            window.location.href = 'page_3.html';
+    // 在此处指定要跳转到的页面URL，并在新标签页中打开
+            window.open('page_4.html', '_blank');
         });
     });
 </script>
