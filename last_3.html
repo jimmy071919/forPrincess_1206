@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小公主 我愛你❤️</title>
+    <link rel="icon" href="photo/love.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+    html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background: pink;
+    }
+    .fade-in-text {
+        text-align: center;
+        font-size: 50px;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+    }
+    .line {
+        opacity: 0; /* 初始时设置透明度为0，文本不可见 */
+        transition: opacity 2s ease; /* 使用过渡效果，在1秒内改变透明度 */
+    }
+    audio {
+        display: none;
+        text-align: center;
+    }
+
+    .button {
+        background-color: #ff80a0;
+        border: none;
+        color: white;
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        font-weight: bold;
+    }
+    #click {
+        background-color: #ff80a0;
+    }
+    #no {
+        background-color: purple;
+    }
+    #heart {
+    position: absolute;
+    display: none;
+    color: red;
+    font-size: 40px;
+}
+
+    .button:hover #heart {
+        display: block;
+        animation: beat 0.5s linear infinite alternate;
+    }
+
+    @keyframes beat {
+        to {
+            transform: scale(1.2);
+        }
+    }
+
+    
+</style>
+<body>
+    <div class="fade-in-text">
+        <p class="line">!!最後要問的是!!</p>
+        <p class="line">你願意一直當我的小公主嗎❤️</p>
+        <button class="line button" id="click">願意!! 愛寶貝<span id="heart">😍😍😍</span></button>
+        <button class="line button" id="no">不願意 nono</button>
+    </div>
+    <span id="heart">❤️</span>
+
+</body>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    var lines = document.querySelectorAll('.line');
+    var index = 0;
+
+    setInterval(function() {
+        if (index < lines.length) {
+            lines[index].style.opacity = 1;
+            index++;
+        }
+    }, 1800); // Show next line every 2.5 seconds
+
+    document.getElementById('click').addEventListener('click', function() {
+        alert("回頭看你的寶貝!!!  還有全部標籤頁的標題 !!!"); // 这里替换成您要跳转的网址
+    });
+
+    document.getElementById('no').addEventListener('click', function() {
+        // 这里添加 "不願意" 按钮点击后的操作
+        alert("拿衛生紙給你的寶貝 他要哭死了😭");
+    });
+});
+
+    document.getElementById('no').addEventListener('mouseover', function() {
+        var button = document.getElementById('no');
+        var maxX = window.innerWidth - button.offsetWidth;
+        var maxY = window.innerHeight - button.offsetHeight;
+        var newX = Math.floor(Math.random() * maxX);
+        var newY = Math.floor(Math.random() * maxY);
+        
+        button.style.position = 'absolute';
+        button.style.left = newX + 'px';
+        button.style.top = newY + 'px';
+    });
+
+</script>
+</html>
