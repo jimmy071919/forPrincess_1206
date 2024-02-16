@@ -70,6 +70,31 @@
         border-radius: 12px;
         font-weight: bold;
     }
+    @media only screen and (max-width: 414px) {
+    /* 在iPhone 11上的样式调整 */
+    body {
+        flex-direction: column; /* 将主轴方向改为垂直 */
+    }
+
+    .photo-container {
+        margin: 20px auto; /* 在小屏幕上居中显示 */
+    }
+
+    .text-container {
+        position: static; /* 在小屏幕上取消绝对定位 */
+        text-align: center;
+        margin: 20px;
+        right: auto;
+    }
+
+    #click {
+        font-size: 14px; /* 调整按钮字体大小 */
+    }
+
+    .line {
+        font-size: 14px; /* 调整段落字体大小 */
+    }
+}
 </style>
 </head>
 <body>
