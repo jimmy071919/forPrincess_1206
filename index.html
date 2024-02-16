@@ -50,6 +50,7 @@ font-weight: bold;
 <body>
 <canvas id="pinkboard"></canvas>
 <button id="welcome">公主請點這邊</button>
+<button id="changeColor">更換背景顏色</button>
 <script>
 /*
 * Settings
@@ -299,11 +300,19 @@ var ParticlePool = (function() {
 
 // 获取按钮元素
 var button = document.getElementById('welcome');
+var changeColorButton = document.getElementById('changeColor');
 
 // 添加点击事件监听器
 button.addEventListener('click', function() {
     // 在此处指定要导航到的页面的 URL
     window.location.href = 'page.html';
+});
+
+// 添加更換背景顏色的事件監聽器
+changeColorButton.addEventListener('click', function() {
+    // 更換背景顏色為隨機顏色
+    var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    document.body.style.backgroundColor = randomColor;
 });
 
 
