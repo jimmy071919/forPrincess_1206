@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+    html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background: pink;
+    }
+    .fade-in-text {
+        text-align: center;
+        font-size: 50px;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+    }
+    .line {
+        opacity: 0; /* 初始时设置透明度为0，文本不可见 */
+        transition: opacity 2s ease; /* 使用过渡效果，在1秒内改变透明度 */
+    }
+    audio {
+        display: none;
+        text-align: center;
+    }
+
+    #clilk {
+        background-color: #ff80a0;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+</style>
+<body>
+    <audio id="myAudio" controls autoplay>
+        <source src="相愛.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="fade-in-text">
+        <p class="line">❤️我的小公主❤️</p>
+        <p class="line">終於等到把這份作品送給你的這一天</p>
+        <p class="line">接下來請和這個網站一起</p>
+        <p class="line">慢慢的回憶我們過去所一起度過的回憶</p>
+        <button class="line" id="clilk">寶貝請點這邊</button>
+    </div>
+    
+</body>
+
+<script>
+    window.onload = function() {
+        setInterval("toggleSound()",100);
+    }
+
+    function toggleSound() {
+        var music = document.getElementById("myAudio");
+        
+        if (music.paused) { //判读是否播放  
+            music.paused=false;
+            music.play(); //没有就播放 
+        }    
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var audio = document.getElementById('myAudio');
+        var lines = document.querySelectorAll('.line'); // 获取包含文本的元素数组
+        var index = 0;
+
+        // 监听音频加载完成事件
+        audio.addEventListener('canplaythrough', function() {
+            // 每隔1.5秒显示下一行文字
+            setInterval(function() {
+                if (index < lines.length) {
+                    lines[index].style.opacity = 1;
+                    index++;
+                }
+            }, 1500);
+        });
+    });
+
+    document.getElementById('clilk').addEventListener('click', function() {
+        window.open('page_2.html', '_blank'); // 这里替换成您要跳转的网址
+    });
+
+</script>
+</html>

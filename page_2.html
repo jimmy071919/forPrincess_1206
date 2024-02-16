@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Floating Photos</title>
+<style>
+    body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background: pink;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .photo-container {
+        margin: 30px 0px 0px 150px;
+        max-width: 500px;
+        position: relative;
+    }
+
+    .photo {
+        max-width: 100%;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+        border-radius: 20px;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .photo:hover {
+        opacity: 0.7;
+    }
+
+    .text-container {
+        position: absolute;
+        text-align: center;
+        top: 5%;
+        right: 250px;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .line {
+        opacity: 0;
+        transition: opacity 2s ease;
+    }
+    #click {
+        background-color: #ff80a0;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+</style>
+</head>
+<body>
+<div class="photo-container">
+    <img class="photo" id="photo" src="">
+</div>
+<div class="text-container">
+    <h1>我們剛開始交往時</h1>
+    
+    <p class="line">那時我們一起做了蛋糕</p>
+    <p class="line">一起連夜趕出網程和系統的期末作業</p>
+    <p class="line">期末結束後 我們一起在操場中慢悠悠的散步</p>
+    <p class="line">拍了我們第一張的情侶照</p>
+
+    <p class="line">在租屋處中我們一起爬牆 一起探索對方</p>
+    <p class="line">雖然做了很多事</p>
+    <p class="line">但我最喜歡抱著你 和你一起談天說地的時光</p>
+
+    <button class="line" id="click">寶貝謝謝你來到我身邊</button>
+</div>
+
+<script>
+    const photoUrls = [
+        "photo/page2_1.jpg",
+        "photo/page2_2.jpg",
+        "photo/page2_3.jpg", 
+        "photo/page2_4.jpg",
+        "photo/page2_5.jpg",
+        "photo/page2_6.jpg",
+        "photo/page2_7.jpg",
+        "photo/page2_8.jpg",
+        "photo/page2_9.jpg",
+    ];
+
+    let currentIndex = 0;
+
+    function createPhotos() {
+        const img = document.getElementById('photo');
+        img.src = photoUrls[currentIndex];
+    }
+
+    function rotatePhotos() {
+        currentIndex = (currentIndex + 1) % photoUrls.length;
+        createPhotos();
+        setTimeout(rotatePhotos, 1800); // Change photo every 2.5 seconds
+    }
+
+    createPhotos();
+    rotatePhotos();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var lines = document.querySelectorAll('.line');
+        var index = 0;
+
+        setInterval(function() {
+            if (index < lines.length) {
+                lines[index].style.opacity = 1;
+                index++;
+            }
+        }, 1800); // Show next line every 2.5 seconds
+
+        // 添加按钮点击事件监听器
+        document.getElementById('click').addEventListener('click', function() {
+            // 在此处指定要跳转到的页面URL
+            window.location.href = 'page_3.html';
+        });
+    });
+</script>
+</body>
+</html>
