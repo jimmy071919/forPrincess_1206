@@ -15,6 +15,7 @@
         padding: 0;
         margin: 0;
         background: pink;
+        overflow: hidden; /* 防止滚动条出现 */
     }
     .fade-in-text {
         text-align: center;
@@ -69,7 +70,14 @@
         }
     }
 
-    
+    .particle {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        background-color: red;
+        pointer-events: none;
+    }
+
 </style>
 <body>
     <div class="fade-in-text">
@@ -83,7 +91,6 @@
 </body>
 
 <script>
-
 document.addEventListener('DOMContentLoaded', function() {
     var lines = document.querySelectorAll('.line');
     var index = 0;
@@ -96,26 +103,57 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1800); // Show next line every 2.5 seconds
 
     document.getElementById('click').addEventListener('click', function() {
-        alert("回頭看你的寶貝!!!  還有全部標籤頁的標題 !!!"); // 这里替换成您要跳转的网址
+        // 创建红色碎片
+        for (var i = 0; i < 1000; i++) {
+            createParticle(50, window.innerHeight - 50); // 从右下角开始
+            createParticle(50, window.innerHeight - 50, true); // 从左下角开始
+        }
+        alert("寶貝我愛你❤️");
     });
 
     document.getElementById('no').addEventListener('click', function() {
-        // 这里添加 "不願意" 按钮点击后的操作
         alert("拿衛生紙給你的寶貝 他要哭死了😭");
     });
+
+    function createParticle(x, y, fromLeft=false) {
+        var particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.innerHTML = '❤️';
+        particle.style.position = 'absolute'; // 添加這一行以確保元素位置正確
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        document.body.appendChild(particle);
+
+        var randomX = Math.random() * (fromLeft ? -1000 : 1000); // 从左侧或右侧移动
+        var randomY = Math.random() * -1000; // 向上移动
+
+        // 添加动画
+        var animation = particle.animate([
+            { transform: `translate(${fromLeft ? '0' : '100'}%, 0)` },
+            { transform: `translate(${randomX}px, ${randomY}px)` }
+        ], {
+            duration: Math.random() * 2000 + 1000, // 随机持续时间
+            easing: 'cubic-bezier(0, .9, .57, 1)', // 贝塞尔曲线动画效果
+            fill: 'forwards' // 动画结束后停留在最后一帧
+        });
+
+        animation.onfinish = () => {
+            particle.remove(); // 动画结束后移除元素
+        };
+    }
 });
 
-    document.getElementById('no').addEventListener('mouseover', function() {
-        var button = document.getElementById('no');
-        var maxX = window.innerWidth - button.offsetWidth;
-        var maxY = window.innerHeight - button.offsetHeight;
-        var newX = Math.floor(Math.random() * maxX);
-        var newY = Math.floor(Math.random() * maxY);
-        
-        button.style.position = 'absolute';
-        button.style.left = newX + 'px';
-        button.style.top = newY + 'px';
-    });
+document.getElementById('no').addEventListener('mouseover', function() {
+    var button = document.getElementById('no');
+    var maxX = window.innerWidth - button.offsetWidth;
+    var maxY = window.innerHeight - button.offsetHeight;
+    var newX = Math.floor(Math.random() * maxX);
+    var newY = Math.floor(Math.random() * maxY);
+    
+    button.style.position = 'absolute';
+    button.style.left = newX + 'px';
+    button.style.top = newY + 'px';
+});
 
 </script>
 </html>
